@@ -1,1 +1,2 @@
-print("Hello from configs")
+require("configs.bindings")
+require("configs.plugins")
