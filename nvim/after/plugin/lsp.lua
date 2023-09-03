@@ -33,3 +33,14 @@ cmp.setup({
 		completeopt = 'menu,menuone,noinsert'
 	},
 })
+
+local lspconfig = require('lspconfig')
+
+local servers = {
+  'lua_ls',
+  'rust_analyzer',
+}
+
+for _, server in ipairs(servers) do
+  lspconfig[server].setup({})
+end
