@@ -43,6 +43,14 @@ return require('packer').startup(function(use)
         }
     }
 
+    use({
+        "kdheepak/lazygit.nvim",
+
+        requires = {
+            "nvim-lua/plenary.nvim",
+        },
+    })
+
     if packer_bootstrap then
         require('packer').sync()
     end
