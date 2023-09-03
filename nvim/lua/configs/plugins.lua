@@ -59,6 +59,16 @@ return require('packer').startup(function(use)
         },
     })
 
+    use{
+        'altermo/ultimate-autopair.nvim',
+        event={'InsertEnter','CmdlineEnter'},
+        branch='v0.6',
+
+        config=function ()
+            require('ultimate-autopair').setup({})
+        end,
+    }
+
     if packer_bootstrap then
         require('packer').sync()
     end
