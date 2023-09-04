@@ -78,6 +78,13 @@ return require('packer').startup(function(use)
 
     use "lewis6991/gitsigns.nvim"
 
+    -- Lua
+    use {
+        'KadoBOT/nvim-spotify',
+        requires = 'nvim-telescope/telescope.nvim',
+        run = 'make'
+    }
+
     if packer_bootstrap then
         require('packer').sync()
     end
