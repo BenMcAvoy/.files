@@ -12,3 +12,6 @@ vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeFocus)
 
 -- Focus Nvim Tree
 vim.keymap.set("n", "<leader>gg", vim.cmd.LazyGit)
+
+-- Open spotify menu
+vim.keymap.set("n", "<leader>s", vim.cmd.Spotify)
