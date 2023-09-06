@@ -78,7 +78,8 @@ return require('packer').startup(function(use)
 
     use "lewis6991/gitsigns.nvim"
 
-    -- Lua
+    use { "catppuccin/nvim", as = "catppuccin" }
+
     use {
         'KadoBOT/nvim-spotify',
         requires = 'nvim-telescope/telescope.nvim',
