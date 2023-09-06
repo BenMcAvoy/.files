@@ -80,6 +80,8 @@ return require('packer').startup(function(use)
 
     use { "catppuccin/nvim", as = "catppuccin" }
 
+    use "https://github.com/rcarriga/nvim-notify"
+
     use {
         'KadoBOT/nvim-spotify',
         requires = 'nvim-telescope/telescope.nvim',
