@@ -1,5 +1,5 @@
 local function theme(colour)
-	colour = colour or "doom-one"
+	colour = colour or "catppuccin-frappe"
 
 	vim.cmd.colorscheme(colour)
 end
