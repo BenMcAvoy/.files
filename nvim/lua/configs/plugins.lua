@@ -83,6 +83,11 @@ return require('packer').startup(function(use)
     use "https://github.com/rcarriga/nvim-notify"
 
     use {
+        "terrortylor/nvim-comment",
+        run = ":lua require('nvim_comment').setup()"
+    }
+
+    use {
         'KadoBOT/nvim-spotify',
         requires = 'nvim-telescope/telescope.nvim',
         run = 'make'
