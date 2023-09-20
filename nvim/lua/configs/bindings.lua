@@ -29,5 +29,6 @@ wk.register({
     f = { function () require("nvterm.terminal").toggle "float" end, "Floating terminal"},
     v = { function () require("nvterm.terminal").toggle "vertical" end, "Vertical terminal"},
     h = { function () require("nvterm.terminal").toggle "horizontal" end, "Horizontal terminal"},
+    t = { "<cmd>TroubleToggle<cr>", "Toggle trouble" },
   }
 }, { prefix = "<leader>" })
