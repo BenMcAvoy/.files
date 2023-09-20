@@ -37,5 +37,10 @@ require("lazy").setup({
             vim.o.timeout = true
             vim.o.timeoutlen = 1000
         end,
-    }
+    },
+
+    {
+      'nvim-lualine/lualine.nvim',
+      dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
 })
