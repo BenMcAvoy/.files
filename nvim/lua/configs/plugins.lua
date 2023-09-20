@@ -13,34 +13,62 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    "znavarasu/onedark.nvim",
+  "znavarasu/onedark.nvim",
 
+  {
+    "kdheepak/lazygit.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+  },
+
+  {
+    "nvim-tree/nvim-tree.lua",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
+    lazy = false,
+  },
+
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 1000
+    end,
+  },
+
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
+  },
+
+  {
+    {'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
+
+    --- Package management in NeoVim
+    {'williamboman/mason.nvim'},
+    {'williamboman/mason-lspconfig.nvim'},
+
+    -- LSP Support
     {
-        "kdheepak/lazygit.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
+      'neovim/nvim-lspconfig',
+      dependencies = {
+        {'hrsh7th/cmp-nvim-lsp'},
+      },
     },
 
+    -- Autocompletion
     {
-        "nvim-tree/nvim-tree.lua",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
-        lazy = false,
-    },
+      'hrsh7th/nvim-cmp',
+      dependencies = {
+        {'L3MON4D3/LuaSnip'},
+      }
+    }
+  },
 
-    {
-        "folke/which-key.nvim",
-        event = "VeryLazy",
-        init = function()
-            vim.o.timeout = true
-            vim.o.timeoutlen = 1000
-        end,
-    },
+  { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', lazy = false},
 
-    {
-      'nvim-lualine/lualine.nvim',
-      dependencies = { 'nvim-tree/nvim-web-devicons' }
-    },
+  "onsails/lspkind.nvim",
 })
