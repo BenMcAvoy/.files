@@ -20,3 +20,5 @@ antigen apply
 alias ls="exa -l"
 
 eval "$(zoxide init zsh)"
+
+export EDITOR="nvim"
