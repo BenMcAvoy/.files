@@ -4,9 +4,6 @@ vim.g.mapleader = ' '
 -- Clear search highlight on escape
 vim.keymap.set("n", "<Esc>", vim.cmd.nohl)
 
--- Focus Nvim Tree
-vim.keymap.set("n", "<leader>e", vim.cmd.NvimTreeFocus)
-
 local wk = require("which-key")
 
 wk.register({
@@ -14,4 +11,13 @@ wk.register({
     name = "git",
     g = { "<cmd>LazyGit<cr>", "Open LazyGit" },
   },
+
+  f = {
+    name = "find",
+    f = { "<cmd>Telescope find_files<cr>", "Find File" },
+    g = { "<cmd>Telescope live_grep<cr>", "Live grep" },
+    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+  },
+
+  e = { "<cmd>NvimTreeFocus<cr>", "Focus Nvim Tree" },
 }, { prefix = "<leader>" })

@@ -80,5 +80,10 @@ require("lazy").setup({
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     opts = {} -- this is equalent to setup({}) function
+  },
+
+  {
+    'nvim-telescope/telescope.nvim', tag = '0.1.3',
+    dependencies = { 'nvim-lua/plenary.nvim' }
   }
 })
