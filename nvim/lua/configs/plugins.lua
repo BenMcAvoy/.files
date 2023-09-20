@@ -92,5 +92,7 @@ require("lazy").setup({
     config = function ()
       require("nvterm").setup()
     end
-  }
+  },
+
+  "lewis6991/gitsigns.nvim",
 })
