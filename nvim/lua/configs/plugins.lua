@@ -71,4 +71,14 @@ require("lazy").setup({
   { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', lazy = false},
 
   "onsails/lspkind.nvim",
+
+  "folke/todo-comments.nvim",
+
+  "tpope/vim-commentary",
+
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    opts = {} -- this is equalent to setup({}) function
+  }
 })
