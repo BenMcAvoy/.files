@@ -14,6 +14,7 @@ require('mason-lspconfig').setup({
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
+local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
 cmp.setup({
   window = {
@@ -41,3 +42,8 @@ cmp.setup({
     completeopt = 'menu,menuone,noinsert'
   },
 })
+
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
