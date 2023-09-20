@@ -13,5 +13,29 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  "znavarasu/onedark.nvim",
+    "znavarasu/onedark.nvim",
+
+    {
+        "kdheepak/lazygit.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+    },
+
+    {
+        "nvim-tree/nvim-tree.lua",
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        },
+        lazy = false,
+    },
+
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 1000
+        end,
+    }
 })
