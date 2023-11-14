@@ -13,7 +13,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  "znavarasu/onedark.nvim",
+  "navarasu/onedark.nvim",
 
   {
     "kdheepak/lazygit.nvim",
