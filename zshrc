@@ -9,6 +9,11 @@ export EDITOR="nvim"
 # Initiate zoxide
 eval "$(zoxide init zsh)"
 
+# Initiate Homebrew
+if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
+
 # Setup Antigen
 antigen use oh-my-zsh
 
