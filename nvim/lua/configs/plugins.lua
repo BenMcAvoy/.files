@@ -30,6 +30,12 @@ require("lazy").setup({
     lazy = false,
   },
 
+  'neovim/nvim-lspconfig',
+  'simrat39/rust-tools.nvim',
+  "rcarriga/nvim-dap-ui",
+
+  'mfussenegger/nvim-dap',
+
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
