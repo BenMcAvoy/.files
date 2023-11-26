@@ -32,3 +32,4 @@ antigen apply
 alias neo="~/Applications/neovide*.AppImage 2>/dev/null"
 alias gc="gitclone"
 alias ls="exa -l"
+alias j="just"
