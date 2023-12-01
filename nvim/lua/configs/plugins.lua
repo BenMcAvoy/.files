@@ -82,6 +82,9 @@ require("lazy").setup({
 
   "tpope/vim-commentary",
 
+  -- Time tracking
+  'wakatime/vim-wakatime',
+
   {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
