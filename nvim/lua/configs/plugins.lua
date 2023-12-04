@@ -109,4 +109,6 @@ require("lazy").setup({
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
+
+  "ntpeters/vim-better-whitespace",
 })

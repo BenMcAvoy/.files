@@ -23,6 +23,12 @@ wk.register({
 
   e = { "<cmd>NvimTreeFocus<cr>", "Focus Nvim Tree" },
 
+  F = {
+    name = "fix",
+
+    w = { "<cmd>StripWhitespace<cr>", "Strip whitespace" },
+  },
+
   t = {
     name = "terminal",
 
