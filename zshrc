@@ -33,3 +33,5 @@ alias neo="~/Applications/neovide*.AppImage 2>/dev/null"
 alias gc="gitclone"
 alias ls="exa -l"
 alias j="just"
+
+alias pause_switch="nmcli connection down pvpn-ipv6leak-protection; sleep 30; nmcli connection up pvpn-ipv6leak-protection"
