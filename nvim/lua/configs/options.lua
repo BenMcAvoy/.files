@@ -23,3 +23,7 @@ vim.api.nvim_set_var('mapleader', ' ')
 
 vim.o.guifont = "JetBrainsMono Nerd Font Mono:h12"
 vim.opt.clipboard = "unnamedplus"
+
+vim.cmd([[
+ au BufRead,BufNewFile *.html.tera set filetype=html
+]])
