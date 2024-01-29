@@ -36,5 +36,6 @@ wk.register({
     v = { function () require("nvterm.terminal").toggle "vertical" end, "Vertical terminal"},
     h = { function () require("nvterm.terminal").toggle "horizontal" end, "Horizontal terminal"},
     t = { "<cmd>TroubleToggle<cr>", "Toggle trouble" },
+    d = { "<cmd>TodoTelescope<cr>", "Toggle todo telescope (T-D, to-do)" },
   }
 }, { prefix = "<leader>" })
