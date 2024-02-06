@@ -1,5 +1,2 @@
-require('onedark').setup {
-    style = 'darker'
-}
-
-require('onedark').load()
+vim.o.background = "dark" -- Alternative: `light`
+vim.cmd([[colorscheme gruvbox]])
