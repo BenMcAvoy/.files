@@ -1,8 +1,7 @@
 source "$HOME/.zsh/antigen.zsh"
 source "$HOME/.funcs.zsh"
 
-export PATH="$PATH:/home/$USER/.local/bin"
-export PATH="$GOPATH/bin:$PATH"
+export PATH="$PATH:/home/$USER/.local/bin:$GOPATH/bin:$HOME/go:$HOME/.cargo/bin"
 export GOPATH="$HOME/go"
 export EDITOR="nvim"
 
@@ -35,3 +34,6 @@ alias ls="exa -l"
 alias j="just"
 
 alias pause_switch="nmcli connection down pvpn-ipv6leak-protection; sleep 30; nmcli connection up pvpn-ipv6leak-protection"
+
+alias root="doas"
+alias ssh="kitty +kitten ssh"
