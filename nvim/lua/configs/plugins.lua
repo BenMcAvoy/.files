@@ -13,6 +13,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  "github/copilot.vim",
+
   "navarasu/onedark.nvim",
 
   { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...},
