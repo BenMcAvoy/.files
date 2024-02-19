@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Function to display the date and time
+clock() {
+	echo -n " $(date '+%Y-%m-%d %H:%M') "
+}
+
+# Function to display the CPU load
+cpu() {
+	echo -n " $(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print  100 - $1"%"}') "
+}
+
+# Function to display the RAM usage
+ram() {
+	echo -n " $(free -h | grep Mem | awk '{print $3 "/" $2}') "
+}
+
+# Main loop that updates the bar every second
+while true; do
+	# Update the bar
+	xsetroot -name "$(echo -n "$(clock) $(cpu) $(ram)")"
+	sleep  1
+done
