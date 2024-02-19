@@ -1,0 +1,7 @@
+*/*::steam-overlay
+games-util/game-device-udev-rules
+# required by games-util/steam-launcher-1.0.0.78-r4::steam-overlay
+# required by @selected
+# required by @world (argument)
+=sys-libs/libudev-compat-186-r1 ~amd64
+

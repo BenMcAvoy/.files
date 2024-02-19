@@ -1,0 +1,14 @@
+diff --git a/dwm.c b/dwm.c
+index f1d86b2..ef7d3e5 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -2152,6 +2152,9 @@ main(int argc, char *argv[])
+ 	if (!(dpy = XOpenDisplay(NULL)))
+ 		die("dwm: cannot open display");
+ 	checkotherwm();
++
++  system("$HOME/.dwm/dwmrc");
++
+ 	setup();
+ #ifdef __OpenBSD__
+ 	if (pledge("stdio rpath proc exec", NULL) == -1)

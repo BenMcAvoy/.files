@@ -1,0 +1,10 @@
+# Enable all packages from the guru repo.
+*/*::guru
+# required by rustup (argument)
+=dev-util/rustup-1.25.2 ~amd64
+# required by media-video/obs-studio (argument)
+=media-video/obs-studio-30.0.2 ~amd64
+# required by mkstage4 (argument)
+=app-backup/mkstage4-0.4.3 ~amd64
+# required by gamemode (argument)
+=games-util/gamemode-1.8.1 ~amd64
