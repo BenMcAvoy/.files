@@ -1,39 +1,53 @@
-source "$HOME/.zsh/antigen.zsh"
-source "$HOME/.funcs.zsh"
+# PATH setup
 
-export PATH="$PATH:/home/$USER/.local/bin:$GOPATH/bin:$HOME/go:$HOME/.cargo/bin"
-export GOPATH="$HOME/go"
-export EDITOR="nvim"
+export PATH="$HOME/.cargo/bin:$HOME/.deno/bin:$HOME/.local/share/bin:$HOME/.local/share/bin/idea/bin:$PATH"
 
-# Initiate zoxide
-eval "$(zoxide init zsh)"
+# Gentoo completions
+autoload -U compinit promptinit
+compinit
+promptinit
+prompt gentoo
+zstyle ':completion::complete:*' use-cache 1
 
-# Initiate Homebrew
-if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# Antigen plugin manager setup.
+if [[ ! -a $HOME/.zsh/antigen.zsh ]]; then
+  mkdir -p $HOME/.zsh
+  curl -L git.io/antigen > $HOME/.zsh/antigen.zsh
 fi
 
-# Setup Antigen
+source $HOME/.zsh/antigen.zsh
+
+# Fuzzy finding in reverse search.
+source /usr/share/fzf/key-bindings.zsh
+
+# Load the OMZ library.
 antigen use oh-my-zsh
 
-# Load Antigen bundles
-antigen bundle zsh-users/zsh-syntax-highlighting
+# Plugins for the prompt.
+antigen bundle joshskidmore/zsh-fzf-history-search
 antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle command-not-found
+antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle git
 
-# Load theme
+# Load the prompt theme.
 antigen theme robbyrussell
 
-# Finish setting up Antigen
+# Apply our changes.
 antigen apply
 
-alias neo="~/Applications/neovide*.AppImage 2>/dev/null"
-alias gc="gitclone"
+# Aliases
 alias ls="exa -l"
-alias j="just"
+alias la="exa -la"
 
-alias pause_switch="nmcli connection down pvpn-ipv6leak-protection; sleep 30; nmcli connection up pvpn-ipv6leak-protection"
+# Zoxide setup
+eval "$(zoxide init zsh)"
 
-alias root="doas"
-alias ssh="kitty +kitten ssh"
+# Setup our SSH keys.
+if ! pgrep -x "ssh-agent" > /dev/null; then
+	eval "$(ssh-agent -s)" > /dev/null
+fi
+
+ssh-add ~/.ssh/id_ed25519 2&> /dev/null
+
+# Make sure our $? is always successful at prompt startup.
+test 1
