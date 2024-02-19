@@ -1,6 +1,3 @@
--- Set the leader
-vim.g.mapleader = ' '
-
 -- Clear search highlight on escape
 vim.keymap.set("n", "<Esc>", vim.cmd.nohl)
 
@@ -10,7 +7,7 @@ wk.register({
   g = {
     name = "git",
 
-    g = { "<cmd>LazyGit<cr>", "Open LazyGit" },
+    g = { "<cmd>GitUi<cr>", "Open GitUI" },
   },
 
   f = {
