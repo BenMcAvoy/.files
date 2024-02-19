@@ -2,23 +2,28 @@
 
 export PATH="$HOME/.cargo/bin:$HOME/.deno/bin:$HOME/.local/share/bin:$HOME/.local/share/bin/idea/bin:$PATH"
 
-# Gentoo completions
 autoload -U compinit promptinit
 compinit
 promptinit
-prompt gentoo
+
+# Gentoo completions
+if command -v emerge &> /dev/null; then
+	prompt gentoo
+fi
+
 zstyle ':completion::complete:*' use-cache 1
 
 # Antigen plugin manager setup.
 if [[ ! -a $HOME/.zsh/antigen.zsh ]]; then
-  mkdir -p $HOME/.zsh
-  curl -L git.io/antigen > $HOME/.zsh/antigen.zsh
+	mkdir -p $HOME/.zsh
+	curl -L git.io/antigen > $HOME/.zsh/antigen.zsh
 fi
 
 source $HOME/.zsh/antigen.zsh
 
-# Fuzzy finding in reverse search.
-source /usr/share/fzf/key-bindings.zsh
+# Attempt to load fuzzy finding in reverse search.
+source /usr/share/fzf/key-bindings.zsh 2&> /dev/null
+source /usr/share/doc/fzf/examples/key-bindings.zsh 2&> /dev/null
 
 # Load the OMZ library.
 antigen use oh-my-zsh
