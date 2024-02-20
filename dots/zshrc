@@ -1,6 +1,6 @@
 # PATH setup
 
-export PATH="$HOME/.cargo/bin:$HOME/.deno/bin:$HOME/.local/share/bin:$HOME/.local/share/bin/idea/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$HOME/.deno/bin:$HOME/.local/share/bin:$HOME/.local/share/bin/idea/bin:/usr/local/go/bin:$HOME/.local/bin:$PATH"
 
 autoload -U compinit promptinit
 compinit
@@ -32,6 +32,7 @@ antigen use oh-my-zsh
 antigen bundle joshskidmore/zsh-fzf-history-search
 antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle wbingli/zsh-wakatime
 antigen bundle git
 
 # Load the prompt theme.
@@ -54,5 +55,9 @@ fi
 
 ssh-add ~/.ssh/id_ed25519 2&> /dev/null
 
-# Make sure our $? is always successful at prompt startup.
+# Check if mise is installed.
+if [[ -f ~/.local/bin/mise ]]; then
+	eval "$(~/.local/bin/mise activate zsh)"
+fi
+
 test 1
