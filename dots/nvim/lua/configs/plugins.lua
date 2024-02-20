@@ -5,6 +5,11 @@ return {
 	-- Keybind management
 	"folke/which-key.nvim",
 
+	-- Markdown editing
+	"mzlogin/vim-markdown-toc",
+	"ixru/nvim-markdown",
+	"godlygeek/tabular",
+
 	-- Theme
 	"ellisonleao/gruvbox.nvim",
 
@@ -18,7 +23,7 @@ return {
 	"github/copilot.vim",
 
 	-- Code tracking
-	{ 'wakatime/vim-wakatime', lazy = false },
+	{ "wakatime/vim-wakatime", lazy = false },
 
 	-- Fuzzy finding
 	{
@@ -32,7 +37,6 @@ return {
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
-		lazy = false,
 	},
 
 	-- Rust extras (e.g. inlay hints)
