@@ -1,3 +1,6 @@
+-- Disable binding to completion keys.
+vim.cmd([[autocmd FileType markdown silent! iunmap <buffer> <Tab>]])
+
 -- Clear search highlight on escape
 vim.keymap.set("n", "<Esc>", vim.cmd.nohl)
 
@@ -19,12 +22,6 @@ wk.register({
   },
 
   e = { "<cmd>NvimTreeFocus<cr>", "Focus Nvim Tree" },
-
-  F = {
-    name = "fix",
-
-    w = { "<cmd>StripWhitespace<cr>", "Strip whitespace" },
-  },
 
   t = {
     name = "terminal",
