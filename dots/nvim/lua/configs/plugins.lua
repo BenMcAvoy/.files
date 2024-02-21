@@ -19,6 +19,9 @@ return {
 	-- Terminal
 	{ "NvChad/nvterm", opts = {} },
 
+	-- LSP status
+	{"j-hui/fidget.nvim", opts = {}},
+
 	-- AI code suggestions
 	"github/copilot.vim",
 
