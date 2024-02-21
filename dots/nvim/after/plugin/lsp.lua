@@ -25,6 +25,12 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	},
 
+	sources = {
+		{ name = 'nvim_lsp' },
+		{ name = 'buffer' },
+		{ name = 'path' },
+	},
+
 	formatting = {
 		fields = {'abbr', 'kind', 'menu'},
 		format = require('lspkind').cmp_format({
