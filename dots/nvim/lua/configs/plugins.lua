@@ -34,6 +34,17 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" }
 	},
 
+	-- Tabline
+	{'romgrk/barbar.nvim',
+    dependencies = {
+      'lewis6991/gitsigns.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
+    init = function() vim.g.barbar_auto_setup = false end,
+    opts = {},
+    version = '^1.0.0',
+  },
+
 	-- Netrw replacement
 	{
 		"nvim-tree/nvim-tree.lua",
