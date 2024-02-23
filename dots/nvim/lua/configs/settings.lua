@@ -28,3 +28,10 @@ vim.opt.hlsearch = true
 vim.o.guifont = "JetBrainsMono Nerd Font Mono:h12"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
+
+vim.cmd([[
+augroup MarkupFiles
+  autocmd!
+  autocmd FileType markdown,txt,tex,typ setlocal spell wrap linebreak
+augroup END
+]])
