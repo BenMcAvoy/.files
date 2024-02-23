@@ -1,4 +1,5 @@
 require("configs.setup")
+require("configs.accents")
 require("configs.settings")
 require("configs.bindings")
 require("configs.commands")
