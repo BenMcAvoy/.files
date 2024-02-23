@@ -1,7 +1,3 @@
--- Disable netrw
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-
 -- Load default configuration
 require("nvim-tree").setup({})
 

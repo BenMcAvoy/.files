@@ -15,6 +15,9 @@ vim.opt.tabstop = 2
 vim.opt.smartindent = true
 vim.opt.wrap = false
 
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrw = 1
+
 --- History settings ---
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
@@ -32,6 +35,7 @@ vim.opt.termguicolors = true
 vim.cmd([[
 augroup MarkupFiles
   autocmd!
+	autocmd FileType markdown,txt,tex,type setlocal spelllang=en_gb,es
   autocmd FileType markdown,txt,tex,typ setlocal spell wrap linebreak
 augroup END
 ]])
