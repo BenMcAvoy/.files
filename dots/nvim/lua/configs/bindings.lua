@@ -4,6 +4,9 @@ vim.cmd([[autocmd FileType markdown silent! iunmap <buffer> <Tab>]])
 -- Clear search highlight on escape
 vim.keymap.set("n", "<Esc>", vim.cmd.nohl)
 
+-- Ctrl + Right to accept a single word from copilot
+vim.cmd([[imap <C-w> <Plug>(copilot-accept-word)]])
+
 local wk = require("which-key")
 
 wk.register({
