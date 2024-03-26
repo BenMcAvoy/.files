@@ -13,8 +13,11 @@ return {
 	-- Theme
 	"ellisonleao/gruvbox.nvim",
 
+	-- Emmet abbreviations
+	"olrtg/nvim-emmet",
+
 	-- Git client
-	"brneor/gitui.nvim",
+	"kdheepak/lazygit.nvim",
 
 	-- Terminal
 	{ "NvChad/nvterm", opts = {} },

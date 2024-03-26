@@ -13,7 +13,7 @@ wk.register({
 	g = {
 		name = "git",
 
-		g = { "<cmd>GitUi<cr>", "Open GitUI" },
+		g = { "<cmd>LazyGit<cr>", "Open LazyGit" },
 	},
 
 	f = {
