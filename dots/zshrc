@@ -1,12 +1,33 @@
 # PATH setup
+function addToPath() {
+	export PATH="$1:$PATH"
+}
 
-export PATH="$HOME/.cargo/bin:$HOME/.deno/bin:$HOME/.local/share/bin:$HOME/.local/share/bin/idea/bin:/usr/local/go/bin:$HOME/.local/bin:$PATH"
+# Setup path for the user.
+addToPath "$HOME/.cargo/bin"
+addToPath "$HOME/.deno/bin"
+addToPath "$HOME/.local/share/bin"
+addToPath "$HOME/.local/share/bin/idea/bin"
+addToPath "$HOME/.local/bin"
+addToPath "$HOME/idea-IDE"
+addToPath "$HOME/MSM/"
+addToPath "$HOME/.bun/bin"
 
+addToPath "/usr/local/go/bin"
+addToPath "/opt/riscv/bin"
+
+# Configure emscripten.
+export EMSDK_QUIET=1
+
+# Set the default editor.
+export EDITOR="nvim"
+
+# Load the shell completions.
 autoload -U compinit promptinit
 compinit
 promptinit
 
-# Gentoo completions
+# Gentoo completions (if available).
 if command -v emerge &> /dev/null; then
 	prompt gentoo
 fi
@@ -61,3 +82,48 @@ if [[ -f ~/.local/bin/mise ]]; then
 fi
 
 test 1
+
+[ -f "/home/ben/.ghcup/env" ] && source "/home/ben/.ghcup/env" # ghcup-env
+
+function bright() {
+	brightnessctl -d "amdgpu_bl0" set $1%
+}
+
+if [ -d "/home/ben/.linuxbrew" ]; then
+	eval "$(/home/ben/.linuxbrew/bin/brew shellenv)"
+fi
+
+if [ -d "/home/ben/emsdk" ]; then
+	source "/home/ben/emsdk/emsdk_env.sh"
+fi
+
+. "$HOME/.cargo/env"
+
+function docxify() {
+	pandoc -s -o "${1%.*}.docx" "$1"
+}
+
+function fix() {
+	git add $1 && git commit --amend --no-edit
+
+	printf "Do you want to force push? [y/N] "
+	read response
+
+	if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+		git push --force
+	else
+		echo "Aborting force push."
+	fi
+}
+
+function dec() {
+	printf "%d\n" "$1"
+}
+
+function hex() {
+	printf "%X\n" "$1"
+}
+
+function bin() {
+	printf "%b\n" $(bc <<< "obase=2; $1")
+}
