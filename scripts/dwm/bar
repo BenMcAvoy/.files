@@ -1,23 +1,72 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Function to display the date and time
 clock() {
-	echo -n " $(date '+%Y-%m-%d %H:%M') "
+	echo -n "󰥔 $(date '+%Y-%m-%d %H:%M')"
+}
+
+brightness() {
+	# get using brightnessctl (need to divide as 25% = 64)
+	brightness=$(brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}')
+
+	# use truncation to cutoff deicmal instead of rounding
+	brightness=${brightness%.*}
+
+	echo -n " $brightness%"
+}
+
+vpn() {
+	country=$(ipaddr | cut -d ' ' -f 4)
+
+	# check if openvpn is running
+	if pgrep -x "openvpn" > /dev/null; then
+		echo -n " $country"
+	else
+		echo -n "󰌿 $country"
+	fi
 }
 
 # Function to display the CPU load
 cpu() {
-	echo -n " $(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print  100 - $1"%"}') "
+	cpu=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print  100 - $1"%"}')
+
+	echo -n " $cpu"
 }
 
 # Function to display the RAM usage
 ram() {
-	echo -n " $(free -h | grep Mem | awk '{print $3 "/" $2}') "
+	free=$(free -h | grep Mem | awk '{print $3}' | tr -d "Gi")
+	total=$(free -h | grep Mem | awk '{print $2}' | tr -d "Gi")
+
+	echo -n " $free/$total GiB"
+}
+
+battery() {
+	if [ ! -d /sys/class/power_supply/BAT0 ]; then
+		return # No battery found, don't display anything
+	fi
+
+	percentage=$(acpi | awk '{print $4}' | tr -d "%,")
+	icon=""
+
+	if [ $percentage -gt 75 ]; then
+		icon=""
+	elif [ $percentage -gt 50 ]; then
+		icon=""
+	elif [ $percentage -gt 25 ]; then
+		icon=""
+	else
+		icon=""
+	fi
+
+	echo -n "$icon  $percentage%"
 }
 
 # Main loop that updates the bar every second
 while true; do
-	# Update the bar
-	xsetroot -name "$(echo -n "$(clock) $(cpu) $(ram)")"
+#	string="$(cpu)$(ram)$(battery)$(vpn)$(clock) "
+string=" $(battery) | $(cpu) | $(ram) | $(vpn) | $(brightness) | $(clock) "
+	xsetroot -name "$string"
+
 	sleep  1
 done
