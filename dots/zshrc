@@ -127,3 +127,60 @@ function hex() {
 function bin() {
 	printf "%b\n" $(bc <<< "obase=2; $1")
 }
+
+#!/bin/sh
+DaySuffix() {
+  case `date +%d` in
+    1|21|31) echo "st";;
+    2|22)    echo "nd";;
+    3|23)    echo "rd";;
+    *)       echo "th";;
+  esac
+}
+
+CURRENT_DATE_FORMATTED=$(date "+%d`DaySuffix` %B %Y")
+
+function todays() {
+	TODAY=$(date +"%d-%b-%Y")
+	LOWER=$(echo $1 | tr '[:upper:]' '[:lower:]')
+
+	case $LOWER in
+		"lesson" | "l")
+			if [ ! -f "$TODAY.md" ]; then
+				echo Creating $TODAY.md
+				echo "# $CURRENT_DATE_FORMATTED" > $TODAY.md
+				echo "# LQ: " >> $TODAY.md
+			fi
+
+			$EDITOR -c "normal G" -c "normal A" -c "normal o" -c "normal o" -c "startinsert" $TODAY.md
+			;;
+		"plan" | "p")
+			if [ ! -f "plan-$TODAY.md" ]; then
+				echo Creating plan-$TODAY.md
+				echo "# Plan - $CURRENT_DATE_FORMATTED" > plan-$TODAY.md
+			fi
+
+			$EDITOR -c "normal G" -c "normal A" -c "normal o" -c "normal o" -c "startinsert" plan-$TODAY.md
+			;;
+		"script" | "s")
+			if [ ! -f "script-$TODAY.md" ]; then
+				echo Creating script-$TODAY.md
+				echo "# Script - $CURRENT_DATE_FORMATTED" > script-$TODAY.md
+			fi
+
+			$EDITOR -c "normal G" -c "normal A" -c "normal o" -c "normal o" -c "startinsert" script-$TODAY.md
+			;;
+		*)
+			echo "Invalid argument."
+			;;
+	esac
+}
+
+fucntion t() { todays $@; }
+function tl() { todays lesson; }
+function tp() { todays plan; }
+function ts() { todays script; }
+
+function backup() { cp $1 ~/backup -ruv }
+
+alias bunx="bun x"
