@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 
 # Function to display the date and time
-clock() {
+function clock() {
 	echo -n "󰥔 $(date '+%Y-%m-%d %H:%M')"
 }
 
-brightness() {
+function brightness() {
+	if [ ! -d /sys/class/backlight ]; then
+		return
+	fi
+
 	# get using brightnessctl (need to divide as 25% = 64)
 	brightness=$(brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}')
 
@@ -15,7 +19,7 @@ brightness() {
 	echo -n " $brightness%"
 }
 
-vpn() {
+function vpn() {
 	country=$(ipaddr | cut -d ' ' -f 4)
 
 	# check if openvpn is running
@@ -27,21 +31,21 @@ vpn() {
 }
 
 # Function to display the CPU load
-cpu() {
+function cpu() {
 	cpu=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print  100 - $1"%"}')
 
 	echo -n " $cpu"
 }
 
 # Function to display the RAM usage
-ram() {
+function ram() {
 	free=$(free -h | grep Mem | awk '{print $3}' | tr -d "Gi")
 	total=$(free -h | grep Mem | awk '{print $2}' | tr -d "Gi")
 
 	echo -n " $free/$total GiB"
 }
 
-battery() {
+function battery() {
 	if [ ! -d /sys/class/power_supply/BAT0 ]; then
 		return # No battery found, don't display anything
 	fi
@@ -49,11 +53,11 @@ battery() {
 	percentage=$(acpi | awk '{print $4}' | tr -d "%,")
 	icon=""
 
-	if [ $percentage -gt 75 ]; then
+	if [ "$percentage" -gt 75 ]; then
 		icon=""
-	elif [ $percentage -gt 50 ]; then
+	elif [ "$percentage" -gt 50 ]; then
 		icon=""
-	elif [ $percentage -gt 25 ]; then
+	elif [ "$percentage" -gt 25 ]; then
 		icon=""
 	else
 		icon=""
