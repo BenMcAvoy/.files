@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+nitrogen --restore &
+bash ~/.config/dwm/bar.sh &
