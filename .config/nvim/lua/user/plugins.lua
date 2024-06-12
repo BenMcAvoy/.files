@@ -5,6 +5,13 @@ return {
 	-- File tree
 	"nvim-tree/nvim-tree.lua",
 
+	{
+		"pmizio/typescript-tools.nvim",
+		opts = {}
+	},
+
+	"wuelnerdotexe/vim-astro",
+
 	-- AI integration --
 	{
 		"zbirenbaum/copilot.lua",
