@@ -1,23 +1,12 @@
 #!/usr/bin/env bash
 
-function append_to_output() {
-	current="$1"
-	to_append="$2"
-
-	# check if `to_append` does to contain the text `error`
-	if [[ $to_append == *"error"* ]]; then
-		echo "$current"
-	else
-		echo "$current | $to_append"
-	fi
-}
-
 function clock() {
 	echo -n "󰥔 $(date '+%Y-%m-%d %H:%M')"
 }
 
 function brightness() {
 	if [ ! -d /sys/class/backlight ]; then
+		echo -n "error: No backlight found"
 		return
 	fi
 
@@ -58,6 +47,7 @@ function ram() {
 
 function battery() {
 	if [ ! -d /sys/class/power_supply/BAT0 ]; then
+		echo "error: No battery found"
 		return # No battery found, don't display anything
 	fi
 
@@ -75,6 +65,18 @@ function battery() {
 	fi
 
 	echo -n "$icon  $percentage%"
+}
+
+function append_to_output() {
+	current="$1"
+	to_append="$2"
+
+	# check if `to_append` does to contain the text `error`
+	if [[ $to_append == *"error"* ]]; then
+		echo "$current"
+	else
+		echo "$current | $to_append"
+	fi
 }
 
 while true; do
