@@ -87,3 +87,10 @@ fi
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh --cmd cd)"
+
+# Bun completions
+[ -s "/home/ben/.bun/_bun" ] && source "/home/ben/.bun/_bun"
+
+# Bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
