@@ -3,16 +3,16 @@ local lsp_zero = require('lsp-zero')
 local cmp = require('cmp')
 
 lsp_zero.on_attach(function(_, bufnr)
-  lsp_zero.default_keymaps({buffer = bufnr})
+	lsp_zero.default_keymaps({buffer = bufnr})
 end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  handlers = {
-    function(server_name)
-      require('lspconfig')[server_name].setup({})
-    end,
-  },
+	handlers = {
+		function(server_name)
+			require('lspconfig')[server_name].setup({})
+		end,
+	},
 })
 
 cmp.setup({
@@ -24,21 +24,21 @@ cmp.setup({
 
 	preselect = 'item',
 	completion = {
-    completeopt = 'menu,menuone,noinsert'
-  },
+		completeopt = 'menu,menuone,noinsert'
+	},
 
 	formatting = {
-    fields = {'abbr', 'kind', 'menu'},
-    format = require('lspkind').cmp_format({
-      mode = 'symbol', -- show only symbol annotations
-      maxwidth = 50, -- prevent the popup from showing more than provided characters
-      ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
+		fields = {'abbr', 'kind', 'menu'},
+		format = require('lspkind').cmp_format({
+			mode = 'symbol', -- show only symbol annotations
+			maxwidth = 50, -- prevent the popup from showing more than provided characters
+			ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
 
 			symbol_map = {
 				Copilot = '',
 			}
-    })
-  },
+		})
+	},
 
 	window = {
 		width = 80,

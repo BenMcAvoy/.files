@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 -- Sensible defaults --
 vim.cmd("runtime! macros/matchit.vim")
 vim.opt.backspace = "indent,eol,start"
@@ -47,4 +49,3 @@ autocmd FileType markdown,txt,tex,type setlocal spelllang=en_gb,es
 autocmd FileType markdown,txt,tex,typ setlocal spell wrap linebreak
 augroup END
 ]])
-

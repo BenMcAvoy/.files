@@ -1,16 +1,14 @@
 return {
-	-- Colour scheme
+	-- Colour scheme --
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
-	-- File tree
+	-- File tree --
 	"nvim-tree/nvim-tree.lua",
 
-	{
-		"pmizio/typescript-tools.nvim",
-		opts = {}
-	},
-
-	"wuelnerdotexe/vim-astro",
+	-- LSP Support --
+	"neovim/nvim-lspconfig",
+	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
 
 	-- AI integration --
 	{
@@ -27,18 +25,28 @@ return {
 		end,
 	},
 
-	{ 'wakatime/vim-wakatime', lazy = false },
+	-- AI status in bar --
+	{ "andrem222/copilot-lualine" },
 
-	-- Debugging --
-	"mfussenegger/nvim-dap",
-	"rcarriga/nvim-dap-ui",
-	{ "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"} },
+	-- AI in completion menu --
+	{
+		"zbirenbaum/copilot-cmp",
+		config = function ()
+			require("copilot_cmp").setup()
+		end
+	},
+
+	-- Terminal --
+	{ "NvChad/nvterm", opts = {} },
+
+	-- Time tracking --
+	{ 'wakatime/vim-wakatime', lazy = false },
 
 	-- Git integration --
 	"lewis6991/gitsigns.nvim",
 	"kdheepak/lazygit.nvim",
 
-	-- Commenting support
+	-- Commenting support --
 	{ "folke/todo-comments.nvim", opts = {} },
 	"tpope/vim-commentary",
 
@@ -48,25 +56,10 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" }
 	},
 
-	-- UI messaging replacement --
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"rcarriga/nvim-notify",
-		}
-	},
-
-	-- LSP Support
-	"neovim/nvim-lspconfig",
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
-
-	-- Renaming
+	-- Renaming --
 	"smjonas/inc-rename.nvim",
 
-	-- Autocompletion
+	-- Autocompletion --
 	"hrsh7th/nvim-cmp",
 	"hrsh7th/cmp-buffer",
 	"hrsh7th/cmp-path",
@@ -74,12 +67,12 @@ return {
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-nvim-lua",
 
-	-- Snippets
-	"L3MON4D3/LuaSnip",
+	-- Snippets --
+	"l3mon4d3/luasnip",
 	"rafamadriz/friendly-snippets",
 
-	-- LSP Configuration
-	"VonHeikemen/lsp-zero.nvim",
+	-- LSP configuration --
+	"vonheikemen/lsp-zero.nvim",
 
 	-- LSP menu --
 	"onsails/lspkind.nvim",
@@ -89,15 +82,9 @@ return {
 	"williamboman/mason-lspconfig.nvim",
 
 	-- Treesitter --
-	{ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
+	{ "nvim-treesitter/nvim-treesitter", run = ":tsupdate" },
 
-	{
-		"zbirenbaum/copilot-cmp",
-		config = function ()
-			require("copilot_cmp").setup()
-		end
-	},
-
+	-- Automatic pairs --
 	{
 		"windwp/nvim-autopairs",
 		config = function()
@@ -105,6 +92,7 @@ return {
 		end
 	},
 
+	-- Startup screen --
 	{
 		"goolord/alpha-nvim",
 		config = function ()
@@ -112,21 +100,16 @@ return {
 		end
 	},
 
+	-- Bar --
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" }
 	},
 
-	{ "AndreM222/copilot-lualine" },
-
-	-- Terminal --
-	{ "akinsho/toggleterm.nvim", config = true },
+	-- Lua vim global support --
+	{ "folke/neodev.nvim", opts = {} },
 
 	-- Markdown support --
-	"mzlogin/vim-markdown-toc",
 	"ixru/nvim-markdown",
-	"godlygeek/tabular",
-
-	-- Lua Configuration --
-	{ "folke/neodev.nvim", opts = {} }
+	"godlygeek/tabular"
 }
