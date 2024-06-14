@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+# If /tmp/bar_run exists, load the PID and kill the process
+if [ -f /tmp/bar_run ]; then
+	kill -9 "$(cat /tmp/bar_run)"
+	rm /tmp/bar_run
+fi
+
+# Get current PID and save it to /tmp/bar_run
+echo $$ > /tmp/bar_run
+
 function clock() {
 	echo -n "󰥔 $(date '+%Y-%m-%d %H:%M')"
 }
