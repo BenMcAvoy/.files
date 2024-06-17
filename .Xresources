@@ -1,0 +1,13 @@
+dwm.normbgcolor:#1e1e2e
+dwm.normbordercolor:#181825
+dwm.normfgcolor:#cdd6f4
+dwm.selbgcolor:#f38ba8
+dwm.selbordercolor:#f38ba8
+dwm.selfgcolor:#ffffff
+dwm.borderpx:2
+dwm.snap:32
+dwm.showbar:1
+dwm.topbar:1
+dwm.nmaster:1
+dwm.resizehints:1
+dwm.mfact:0.55
