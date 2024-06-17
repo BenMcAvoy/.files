@@ -14,15 +14,16 @@ function clock() {
 }
 
 function brightness() {
-	if [ ! -d /sys/class/backlight ]; then
-		echo -n "error: No backlight found"
-		return
+	# Check if the /sys/class/backlight/ directory is empty
+	if [ ! "$(ls -A /sys/class/backlight/)" ]; then
+		echo "error: No backlight found"
+		return # No backlight found, don't display anything
 	fi
 
-	# get using brightnessctl (need to divide as 25% = 64)
+	# Get using brightnessctl (need to divide as 25% = 64)
 	brightness=$(brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}')
 
-	# use truncation to cutoff deicmal instead of rounding
+	# Use truncation to cutoff deicmal instead of rounding
 	brightness=${brightness%.*}
 
 	echo -n " $brightness%"
