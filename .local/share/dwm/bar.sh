@@ -29,13 +29,11 @@ function brightness() {
 }
 
 function vpn() {
-	country=$(ipaddr | cut -d ' ' -f 4)
-
 	# check if openvpn is running
 	if pgrep -x "openvpn" > /dev/null; then
-		echo -n " $country"
+		echo -n " NL"
 	else
-		echo -n "󰌿 $country"
+		echo -n "󰌿 GB"
 	fi
 }
 
