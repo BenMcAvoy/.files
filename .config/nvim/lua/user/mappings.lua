@@ -39,3 +39,5 @@ vim.keymap.set('n', '<Leader>th', horizontal_term)
 
 -- Renaming support --
 vim.keymap.set("n", "<leader>rn", ":IncRename ")
+
+vim.keymap.set("n", "<leader>bl", ":BaconList ")
