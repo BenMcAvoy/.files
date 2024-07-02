@@ -98,3 +98,17 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Functions
+
+function fix() {
+	git add $1
+	git commit --amend --no-edit
+
+	# Ask for confirmation to push
+	printf "Do you want to (force) push the changes? [y/n]: "
+	read -r response
+	if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+		git push --force
+	fi
+}
