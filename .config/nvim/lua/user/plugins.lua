@@ -10,6 +10,9 @@ return {
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 
+	-- Bacon integration --
+	"Canop/nvim-bacon",
+
 	-- AI integration --
 	{
 		"zbirenbaum/copilot.lua",
