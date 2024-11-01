@@ -1,8 +1,8 @@
-dwm.normbgcolor:#1e1e2e
-dwm.normbordercolor:#181825
-dwm.normfgcolor:#cdd6f4
-dwm.selbgcolor:#f38ba8
-dwm.selbordercolor:#f38ba8
+dwm.normbgcolor:#191724
+dwm.normbordercolor:#1f1d2e
+dwm.normfgcolor:#e0def4
+dwm.selbgcolor:##1f1d2e
+dwm.selbordercolor:#eb6f92
 dwm.selfgcolor:#ffffff
 dwm.borderpx:2
 dwm.snap:32

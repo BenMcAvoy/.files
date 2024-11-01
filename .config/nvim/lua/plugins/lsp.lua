@@ -1,42 +1,74 @@
 return {
-	{ 'VonHeikemen/lsp-zero.nvim',        branch = 'v4.x' },
-	{ 'neovim/nvim-lspconfig' },
-	{ 'hrsh7th/cmp-nvim-lsp' },
-	{ 'hrsh7th/nvim-cmp' },
-	{ 'williamboman/mason.nvim' },
-	{ 'williamboman/mason-lspconfig.nvim' },
+	"neovim/nvim-lspconfig",
+	"hrsh7th/nvim-cmp",
+	"hrsh7th/cmp-nvim-lsp",
+	"mason-lspconfig.nvim",
+	"williamboman/mason-lspconfig.nvim",
+	"williamboman/mason.nvim",
+	"mfussenegger/nvim-dap",
+	"rcarriga/nvim-dap-ui",
+	"mfussenegger/nvim-dap",
+	"rcarriga/nvim-dap-ui",
+	"VonHeikemen/lsp-zero.nvim",
+
+	"hrsh7th/cmp-path",
+	"onsails/lspkind.nvim",
+
+	{ "supermaven-inc/supermaven-nvim", opts = {} },
 
 	{
-		'folke/lazydev.nvim',
-		ft = 'lua', -- only load on lua files
-		opts = {
-			library = {
-				-- See the configuration section for more details
-				-- Load luvit types when the `vim.uv` word is found
-				{ path = 'luvit-meta/library', words = { 'vim%.uv' } },
-				plugins = { "nvim-dap-ui" },
-				types = true
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {},
+	},
+
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {}
+	},
+
+	{ "lewis6991/gitsigns.nvim",        opts = {} },
+
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		opts = {},
+		config = function()
+			vim.cmd("colo rose-pine")
+		end
+	},
+
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+
+	{
+		"folke/trouble.nvim",
+		opts = {}, -- for default options, refer to the configuration section for custom setup.
+		cmd = "Trouble",
+		keys = {
+			{
+				"<leader>tt",
+				"<cmd>Trouble diagnostics<cr>",
+				desc = "Diagnostics (Trouble)",
+			},
+			{
+				"<leader>td",
+				"<cmd>Trouble todo<cr>",
+				desc = "Todo List (Trouble)",
+			},
+			{
+				"<leader>ts",
+				"<cmd>Trouble symbols<cr>",
+				desc = "Workspace Symbols (Trouble)",
 			},
 		},
 	},
-	{ 'Bilal2453/luvit-meta',            lazy = true }, -- optional `vim.uv` typings
-	{                                                  -- optional completion source for require statements and module annotations
-		'hrsh7th/nvim-cmp',
-		opts = function(_, opts)
-			opts.sources = opts.sources or {}
-			table.insert(opts.sources, {
-				name = 'lazydev',
-				group_index = 0, -- set group index to 0 to skip loading LuaLS completions
-			})
-		end,
-	},
 
-	{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
-	{ 'github/copilot.vim' },
+	"wakatime/vim-wakatime",
 
 	{
-		'felpafel/inlay-hint.nvim',
-		event = 'LspAttach',
-		config = true,
-	},
+		'windwp/nvim-autopairs',
+		event = "InsertEnter",
+		config = true
+	}
 }

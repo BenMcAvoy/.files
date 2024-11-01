@@ -9,7 +9,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # Setup path
-export PATH="$PATH:/home/ben/.local/bin:/usr/local/go/bin:$HOME/go/bin/"
+export PATH="$PATH:/home/ben/.local/bin:/usr/local/go/bin:$HOME/go/bin/:$HOME/.luarocks/bin"
 
 # Setup homebrew if it's installed
 if [[ -f "/opt/homebrew/bin/brew" ]] then
@@ -112,3 +112,6 @@ function fix() {
 		git push --force
 	fi
 }
+export VCPKG_ROOT=/home/ben/.local/share/vcpkg
+
+export PATH=$HOME/.local/share/gem/ruby/3.3.0/bin:$PATH

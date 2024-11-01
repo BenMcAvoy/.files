@@ -1,2 +1,2 @@
 xrdb -merge ~/.Xresources
-exec dbus-launch --exit-with-x11 "dwm"
+exec dbus-launch dwm
